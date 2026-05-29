@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "toggletest"
+version = "1.0.0"
+description = "Universal Python library for hardware toggle switch testing automation"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+
+dependencies = []
+
+[project.optional-dependencies]
+arduino   = ["pyserial>=3.5"]
+rpi       = ["RPi.GPIO>=0.7"]
+dev       = ["pytest>=7.0", "pytest-cov"]
+all       = ["pyserial>=3.5", "pytest>=7.0", "pytest-cov"]
+
+[project.scripts]
+toggletest = "toggletest.cli:main"
+
+[project.entry_points."pytest11"]
+toggletest = "toggletest.pytest_plugin"
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "examples"]
+addopts   = "-v --tb=short"
+markers   = [
+    "hardware: requires real hardware",
+    "arduino: requires Arduino connection",
+]
