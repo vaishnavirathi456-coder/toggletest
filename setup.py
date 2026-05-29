@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="toggletest",
+    name="toggletest-hw",
     version="1.0.0",
     author="Vaishnavi Rathi",
     author_email="rathi.va@northeastern.edu",
