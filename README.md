@@ -1,3 +1,8 @@
+![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Platform](https://img.shields.io/badge/platform-Arduino%20%7C%20RPi%20%7C%20Mock-orange.svg)
+![Status](https://img.shields.io/badge/status-active-brightgreen.svg)
+
 # toggletest
 
 Universal Python library for hardware toggle switch testing automation.
