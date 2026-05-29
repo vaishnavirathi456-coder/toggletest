@@ -9,7 +9,7 @@
 
 Universal Python library for hardware toggle switch testing automation.
 
-Supports Arduino (USB-serial), Raspberry Pi (GPIO), and a software Mock backend all through the same API.
+Supports Arduino (USB-Serial), Raspberry Pi (GIPO), and a software Mock backend all through the same API.
 
 **Built by:** Vaishnavi Rathi | MS ECE @ Northeastern University
 
