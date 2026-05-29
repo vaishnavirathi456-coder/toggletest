@@ -1,0 +1,11 @@
+# Core (no dependencies required)
+
+# Arduino backend
+pyserial>=3.5
+
+# Development and testing
+pytest>=7.0
+pytest-cov
+
+# Optional: Raspberry Pi
+# RPi.GPIO>=0.7
