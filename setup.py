@@ -9,7 +9,7 @@ setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/vaishnavirathi456-coder/toggletest",
-    packages=find_packages(),
+    packages=find_packages(exclude=["tests", "tests.*", "examples", "examples.*"]),
     python_requires=">=3.8",
     install_requires=[],
     extras_require={
