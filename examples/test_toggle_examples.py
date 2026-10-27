@@ -4,7 +4,6 @@ Example pytest tests — run without hardware using MockBackend.
     pytest examples/test_toggle_examples.py --no-hardware -v
 """
 
-pytest_plugins = ["toggletest.pytest_plugin"]
 
 from toggletest import (
     Toggle, MockBackend,

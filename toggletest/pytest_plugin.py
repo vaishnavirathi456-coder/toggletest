@@ -45,9 +45,13 @@ if PYTEST_AVAILABLE:
             backend=mock_backend,
             pin=params.get("pin", 2),
             mode=params.get("mode", "INPUT"),
-            debounce_ms=params.get("debounce_ms", 50.0),
+            debounce_ms=params.get("debounce_ms", 0.0),
             label=params.get("label", "mock_toggle"),
         )
+        # Capture the starting state so the first real change
+        # is counted as a change, not as initialization.
+        if toggle.mode == "INPUT":
+            toggle.read()
         yield toggle
 
     @pytest.fixture

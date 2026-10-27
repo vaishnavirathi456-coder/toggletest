@@ -9,7 +9,7 @@
 
 Universal Python library for hardware toggle switch testing automation.
 
-Supports Arduino (USB-Serial), Raspberry Pi (GIPO), and a software Mock backend all through the same API.
+Supports Arduino (USB-Serial), Raspberry Pi (GPIO), and a software Mock backend all through the same API.
 
 **Built by:** Vaishnavi Rathi | MS ECE @ Northeastern University
 
@@ -18,10 +18,10 @@ Supports Arduino (USB-Serial), Raspberry Pi (GIPO), and a software Mock backend 
 ## Install
 
 ```bash
-pip install toggletest              # core only (mock backend)
-pip install toggletest[arduino]     # + pyserial for Arduino
-pip install toggletest[rpi]         # + RPi.GPIO for Raspberry Pi
-pip install toggletest[all]         # everything including pytest
+pip install toggletest-hw              # core only (mock backend)
+pip install toggletest-hw[arduino]     # + pyserial for Arduino
+pip install toggletest-hw[rpi]         # + RPi.GPIO for Raspberry Pi
+pip install toggletest-hw[all]         # everything including pytest
 ```
 
 ## Arduino setup
@@ -47,7 +47,8 @@ with ArduinoBackend(port='/dev/ttyUSB0') as hw:
 from toggletest import Toggle, MockBackend
 
 with MockBackend(initial_states={2: False}) as hw:
-    t = Toggle(hw, pin=2, mode='INPUT', debounce_ms=50)
+    t = Toggle(hw, pin=2, mode='INPUT', debounce_ms=0)
+    t.read()                # capture the starting state
     hw.set_state(2, True)   # simulate switch press
     print(t.read())         # True
     print(t.change_count)   # 1
@@ -126,6 +127,20 @@ class MyCustomBackend(HardwareBackend):
 ---
 
 ## Project structure
+
+    toggletest/              # repository root
+    |-- toggletest/          # the Python package
+    |   |-- __init__.py
+    |   |-- toggle.py        # Toggle class and ToggleEvent
+    |   |-- logger.py        # event logging and CSV export
+    |   |-- cli.py           # toggletest command-line tool
+    |   |-- pytest_plugin.py # fixtures, assertions, CLI options
+    |   |-- backends/        # Arduino, Raspberry Pi, and Mock backends
+    |-- examples/            # example tests and Arduino firmware
+    |-- tests/
+    |-- setup.py
+    |-- pyproject.toml
+    
 ---
 
 ## License
